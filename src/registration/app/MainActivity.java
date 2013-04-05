@@ -11,7 +11,7 @@ public class MainActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        TextView text = new TextView("Hello World!");
+        TextView text = new TextView("Hello World!!");
         setContentView(text);
         //setContentView(R.layout.main);
     }
