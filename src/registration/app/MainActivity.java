@@ -2,7 +2,7 @@ package registration.app;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.webkit.WebView;
 
 public class MainActivity extends Activity
 {
@@ -11,8 +11,10 @@ public class MainActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        TextView text = new TextView("Hello World!!");
-        setContentView(text);
+        WebView web = new WebView(this);
+        web.getSettings().setJavaScriptEnabled(true);
+        web.loadUrl("file:///android_asset/index.html");
+        setContentView(web);
         //setContentView(R.layout.main);
     }
 }
