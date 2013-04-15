@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
 
 /**
  *
@@ -47,7 +48,7 @@ public class Registry
     
     public Registrant[] getRegistrant(String filterCriteria,String sortCriteria)
     {
-        
+        //Collections.sort(registrants,c);
     }
     
     public Registrant selectRandom()
