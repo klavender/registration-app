@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-public class MainActivity extends Activity
+public class MainMenu extends Activity
 {
     /** Called when the activity is first created. */
     @Override
@@ -15,6 +15,6 @@ public class MainActivity extends Activity
         //web.getSettings().setJavaScriptEnabled(true);
         //web.loadUrl("file:///android_asset/index.html");
         //setContentView(web);
-        setContentView(R.layout.test);
+        setContentView(R.layout.main);
     }
 }

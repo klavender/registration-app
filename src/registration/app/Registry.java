@@ -51,7 +51,7 @@ public class Registry
         return true;
     }
     
-    public ArrayList<Registrant> getRegistrant(String filterCriteria,String sortCriteria)
+    public ArrayList<Registrant> getRegistrant(String filterString,String filterCriteria,String sortCriteria)
     {
         if (sortCriteria == "FName")
             Collections.sort(registrants,new RegistrantComparatorFName());
@@ -60,7 +60,25 @@ public class Registry
         else if (sortCriteria == "ZCode")
             Collections.sort(registrants,new RegistrantComparatorZCode());
         
-        return registrants;
+        if (filterCriteria.length()==0) return registrants;
+        
+        Iterator<Registrant> iterator = registrants.iterator();
+        ArrayList<Registrant> registrants_filtered = new ArrayList<Registrant>();
+        
+        while (iterator.hasNext())
+        {
+            Registrant register = iterator.next();
+            int field=0;
+            
+            if (filterCriteria == "FName") field = 0;
+            else if (filterCriteria == "LName") field = 1;
+            else if (filterCriteria == "Email") field = 3;
+            
+            if (register.getField(field).contains(filterString)) 
+                registrants_filtered.add(register);
+        }
+        
+        return registrants_filtered;
     }
     
     public Registrant selectRandom()
