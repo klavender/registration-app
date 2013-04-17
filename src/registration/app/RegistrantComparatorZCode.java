@@ -14,6 +14,9 @@ public class RegistrantComparatorZCode implements Comparator<Registrant>
 {
     public int compare(Registrant reg1,Registrant reg2)
     {
-        return 1;
+         Integer r1 = Integer.parseInt(reg1.getField(2)),
+                 r2 = Integer.parseInt(reg2.getField(2));
+         
+         return r1.compareTo(r2);
     }
 }

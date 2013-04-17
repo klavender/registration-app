@@ -20,8 +20,8 @@ public class Registrant
     
     public String writeOut()
     {
-        String dataout;
-        for (int i = 0; i < bla; i++)
+        String dataout = new String();
+        for (int i = 0; i < 11; i++)
         {
             dataout.concat(datafields[i]);
             dataout.concat(",");

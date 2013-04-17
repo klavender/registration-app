@@ -14,6 +14,6 @@ public class RegistrantComparatorLName implements Comparator<Registrant>
 {
     public int compare(Registrant reg1,Registrant reg2)
     {
-        return 1;
+         return reg1.getField(1).compareTo(reg2.getField(1));
     }
 }

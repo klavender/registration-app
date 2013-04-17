@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
+import java.util.Random;
 
 /**
  *
@@ -32,6 +33,8 @@ public class Registry
             file_out.write(register.writeOut());
         }
         file_out.close();
+        
+        return true;
     }
     
     public boolean readIn() throws FileNotFoundException, IOException
@@ -39,21 +42,31 @@ public class Registry
         FileReader file = new FileReader("trans.dat");
         BufferedReader file_in = new BufferedReader(file);
         String line;
-        while (line = file_in.readLine() != null)
+        while ((line = file_in.readLine()) != null)
         {
             registrants.add(new Registrant(line));
         }
         file_in.close();
+        
+        return true;
     }
     
-    public Registrant[] getRegistrant(String filterCriteria,String sortCriteria)
+    public ArrayList<Registrant> getRegistrant(String filterCriteria,String sortCriteria)
     {
-        //Collections.sort(registrants,c);
+        if (sortCriteria == "FName")
+            Collections.sort(registrants,new RegistrantComparatorFName());
+        else if (sortCriteria == "LName")
+            Collections.sort(registrants,new RegistrantComparatorLName());
+        else if (sortCriteria == "ZCode")
+            Collections.sort(registrants,new RegistrantComparatorZCode());
+        
+        return registrants;
     }
     
     public Registrant selectRandom()
     {
-        
+        Random ran = new Random(System.nanoTime());
+        return registrants.get(ran.nextInt()%registrants.size());
     }
     
     ArrayList<Registrant> registrants;
