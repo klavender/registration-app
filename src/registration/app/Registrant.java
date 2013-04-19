@@ -28,8 +28,7 @@ public class Registrant
         String dataout = new String();
         for (int i = 0; i < 11; i++)
         {
-            dataout.concat(datafields[i]);
-            dataout.concat(",");
+            dataout = dataout + datafields[i] + ",";
         }
         return dataout;
     }
@@ -48,6 +47,12 @@ public class Registrant
     public void setField(int field,String value)
     {
         datafields[field] = value;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return writeOut();
     }
     
     String[] datafields;

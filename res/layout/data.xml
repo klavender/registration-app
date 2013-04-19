@@ -15,13 +15,13 @@
 <Spinner
 	android:id="@+id/scriteria"
 	android:layout_width="107dp"
-	android:layout_height="44dp"
+	android:layout_height="32dp"
 	android:layout_x="198dp"
 	android:layout_y="73dp" />
 <Spinner
 	android:id="@+id/fcriteria"
 	android:layout_width="109dp"
-	android:layout_height="45dp"
+	android:layout_height="34dp"
 	android:layout_x="20dp"
 	android:layout_y="72dp" />
 <TextView
@@ -44,19 +44,19 @@
 	android:layout_height="41dp"
 	android:hint="EditText"
 	android:textSize="18sp"
-	android:layout_x="22dp"
-	android:layout_y="123dp" />
+	android:layout_x="19dp"
+	android:layout_y="113dp" />
 <ListView
 	android:id="@+id/flist"
 	android:layout_width="280dp"
-	android:layout_height="185dp"
+	android:layout_height="216dp"
 	android:layout_x="24dp"
-	android:layout_y="170dp" />
+	android:layout_y="159dp" />
 <Button
 	android:id="@+id/bexit1"
 	android:layout_width="181dp"
 	android:layout_height="47dp"
 	android:text="Exit"
 	android:layout_x="73dp"
-	android:layout_y="372dp" />
+	android:layout_y="382dp" />
 </AbsoluteLayout>

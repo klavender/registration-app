@@ -27,7 +27,7 @@
 	android:layout_x="49dp"
 	android:layout_y="339dp" />
 <TextView
-	android:id="@+id/widget60"
+	android:id="@+id/rtext"
 	android:layout_width="213dp"
 	android:layout_height="71dp"
 	android:background="#ffffffff"

@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 import java.util.Iterator;
 /**
@@ -145,24 +146,38 @@ public class ButtonListener implements View.OnClickListener, Spinner.OnItemSelec
             case R.id.brandom:
                 a.setContentView(R.layout.random);
                 ((Button) a.findViewById(R.id.bexit2)).setOnClickListener(this);
+                ((Button) a.findViewById(R.id.bselect)).setOnClickListener(this);
+                break;
+            case R.id.bselect:
+                TextView text = (TextView) a.findViewById(R.id.rtext);
+                Registrant registre = (Registrant) ((MainMenu)a).registrant_db.selectRandom();
+                text.setText(registre.getField(0) + " " + registre.getField(1) + " " + registre.getField(2)
+                        + "\n" + registre.getField(5));
                 break;
             case R.id.bsearch:
                 a.setContentView(R.layout.data);
+                ArrayAdapter<CharSequence> fsa = ArrayAdapter.createFromResource(
+                a, R.array.fopts, android.R.layout.simple_spinner_item);
+                ArrayAdapter<CharSequence> ssa = ArrayAdapter.createFromResource(
+                a, R.array.sopts, android.R.layout.simple_spinner_item);
+                
+                
                 ((Button) a.findViewById(R.id.bexit1)).setOnClickListener(this);
-                ((Spinner) a.findViewById(R.id.fcriteria)).setOnItemSelectedListener(this);
-                ((Spinner) a.findViewById(R.id.scriteria)).setOnItemSelectedListener(this);
+                Spinner fs = (Spinner) a.findViewById(R.id.fcriteria);
+                Spinner ss = (Spinner) a.findViewById(R.id.scriteria);
+                
+                
+                fsa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ssa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                //fs.setAdapter(fsa);
+                //ss.setAdapter(ssa);
+                fs.setOnItemSelectedListener(this);
+                ss.setOnItemSelectedListener(this);
                 
                 ListView list = (ListView) a.findViewById(R.id.flist);
                 ArrayList<Registrant> registrants = ((MainMenu)a).registrant_db.getRegistrants("", "","");
-                Iterator<Registrant> it = registrants.iterator();
-                
-                while (it.hasNext())
-                {
-                    Registrant register = it.next();
-                    TextView text = new TextView(a);
-                    text.setText(register.writeOut());
-                    //list.addView(text,500,30);
-                }
+                ArrayAdapter<Registrant> aa = new ArrayAdapter<Registrant>(a,android.R.layout.simple_list_item_1,registrants);
+                list.setAdapter(aa);
                 
                 break;
             case R.id.bregister:
