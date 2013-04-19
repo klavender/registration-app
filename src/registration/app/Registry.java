@@ -4,6 +4,7 @@
  */
 package registration.app;
 import registration.app.Registrant;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
@@ -63,7 +64,11 @@ public class Registry
     
     public boolean readIn() throws FileNotFoundException, IOException
     {
-        FileReader file = new FileReader("trans.dat");
+        String filename = new String("trans.dat");
+        File fcheck = new File("master.dat");
+        if (fcheck.length()> 0) filename = "master.dat";
+        
+        FileReader file = new FileReader(filename);
         BufferedReader file_in = new BufferedReader(file);
         String line;
         while ((line = file_in.readLine()) != null)
