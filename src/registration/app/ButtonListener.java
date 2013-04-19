@@ -11,6 +11,7 @@ import android.app.AlertDialog;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.content.DialogInterface;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.Activity;
@@ -151,8 +152,8 @@ public class ButtonListener implements View.OnClickListener, Spinner.OnItemSelec
             case R.id.bselect:
                 TextView text = (TextView) a.findViewById(R.id.rtext);
                 Registrant registre = (Registrant) ((MainMenu)a).registrant_db.selectRandom();
-                text.setText(registre.getField(0) + " " + registre.getField(1) + " " + registre.getField(2)
-                        + "\n" + registre.getField(5));
+                String info = registre.getField(0) + " " + registre.getField(1) + " " + registre.getField(2) + "\n" + registre.getField(5);
+                text.setText(info);
                 break;
             case R.id.bsearch:
                 a.setContentView(R.layout.data);

@@ -24,19 +24,38 @@ public class Registry
     public Registry()
     {
         registrants = new ArrayList<Registrant>();
+        try
+        {
+            try
+            {
+                readIn();
+            }
+            catch (FileNotFoundException e)
+            {
+                FileWriter file;
+                file = new FileWriter("trans.dat");
+                file.close();
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
     }
     
-    public boolean writeOut() throws IOException
+    public boolean writeOut(Registrant registree) throws IOException
     {
         FileWriter file;
         file = new FileWriter("trans.dat");
         BufferedWriter file_out = new BufferedWriter(file);
-        Iterator<Registrant> iterator = registrants.iterator();
+        /*Iterator<Registrant> iterator = registrants.iterator();
         while (iterator.hasNext())
         {
             Registrant register = iterator.next();
             file_out.write(register.writeOut());
-        }
+        }*/
+        file_out.newLine();
+        file_out.write(registree.writeOut());
         file_out.close();
         
         return true;
@@ -49,7 +68,7 @@ public class Registry
         String line;
         while ((line = file_in.readLine()) != null)
         {
-            registrants.add(new Registrant(line));
+            if (line!="") registrants.add(new Registrant(line));
         }
         file_in.close();
         
@@ -58,6 +77,22 @@ public class Registry
     
     public ArrayList<Registrant> getRegistrants(String filterString,String filterCriteria,String sortCriteria)
     {
+        try
+        {
+            try
+            {
+                readIn();
+            }
+            catch (FileNotFoundException e)
+            {
+                
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+        
         if (sortCriteria == "FName")
             Collections.sort(registrants,new RegistrantComparatorFName());
         else if (sortCriteria == "LName")
@@ -89,12 +124,37 @@ public class Registry
     public Registrant selectRandom()
     {
         Random ran = new Random(System.nanoTime());
+        
+        try
+        {
+            try
+            {
+                readIn();
+            }
+            catch (FileNotFoundException e)
+            {
+                
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+        
         return registrants.get(ran.nextInt()%registrants.size());
     }
     
     public void addRegistrant(Registrant registree)
     {
         registrants.add(registree);
+        try
+        {
+            writeOut(registree);
+        }
+        catch (IOException e)
+        {
+                    
+        }
     }
     
     ArrayList<Registrant> registrants;
