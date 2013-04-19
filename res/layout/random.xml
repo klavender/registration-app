@@ -13,14 +13,14 @@
 	android:layout_x="7dp"
 	android:layout_y="5dp" />
 <Button
-	android:id="@+id/select"
+	android:id="@+id/bselect"
 	android:layout_width="219dp"
 	android:layout_height="53dp"
 	android:text="Select"
 	android:layout_x="50dp"
 	android:layout_y="65dp" />
 <Button
-	android:id="@+id/rexit"
+	android:id="@+id/bexit2"
 	android:layout_width="219dp"
 	android:layout_height="48dp"
 	android:text="Exit"

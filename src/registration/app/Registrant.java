@@ -13,6 +13,11 @@ package registration.app;
 
 public class Registrant 
 {
+    public Registrant()
+    {
+        datafields = new String[11];
+    }
+    
     public Registrant(String line)
     {
         readIn(line);

@@ -5,28 +5,28 @@
 	android:layout_height="fill_parent"
 	xmlns:android="http://schemas.android.com/apk/res/android">
 <Button
-	android:id="@+id/search"
+	android:id="@+id/bsearch"
 	android:layout_width="271dp"
 	android:layout_height="53dp"
 	android:text="Search"
 	android:layout_x="26dp"
 	android:layout_y="132dp" />
 <Button
-	android:id="@+id/random"
+	android:id="@+id/brandom"
 	android:layout_width="271dp"
 	android:layout_height="53dp"
 	android:text="Select Random"
 	android:layout_x="26dp"
 	android:layout_y="199dp" />
 <Button
-	android:id="@+id/mexit"
+	android:id="@+id/bquit"
 	android:layout_width="271dp"
 	android:layout_height="53dp"
 	android:text="Exit"
 	android:layout_x="27dp"
 	android:layout_y="301dp" />
 <Button
-	android:id="@+id/register"
+	android:id="@+id/bregister"
 	android:layout_width="271dp"
 	android:layout_height="53dp"
 	android:text="Register"

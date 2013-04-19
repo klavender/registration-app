@@ -21,6 +21,11 @@ import java.util.Random;
  */
 public class Registry 
 {
+    public Registry()
+    {
+        registrants = new ArrayList<Registrant>();
+    }
+    
     public boolean writeOut() throws IOException
     {
         FileWriter file;
@@ -51,7 +56,7 @@ public class Registry
         return true;
     }
     
-    public ArrayList<Registrant> getRegistrant(String filterString,String filterCriteria,String sortCriteria)
+    public ArrayList<Registrant> getRegistrants(String filterString,String filterCriteria,String sortCriteria)
     {
         if (sortCriteria == "FName")
             Collections.sort(registrants,new RegistrantComparatorFName());
@@ -85,6 +90,11 @@ public class Registry
     {
         Random ran = new Random(System.nanoTime());
         return registrants.get(ran.nextInt()%registrants.size());
+    }
+    
+    public void addRegistrant(Registrant registree)
+    {
+        registrants.add(registree);
     }
     
     ArrayList<Registrant> registrants;
