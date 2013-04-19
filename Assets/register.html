@@ -12,6 +12,7 @@ and open the template in the editor.
 
         <!-- Add fancyBox -->
         <link rel="stylesheet" href="fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+        <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
         <script type="text/javascript" src="fancybox/jquery.fancybox.js?v=2.1.4"></script>
         <script language="JavaScript">
             $(document).ready(function() {
@@ -21,6 +22,28 @@ and open the template in the editor.
     </head>
     <body>
         <h3 align='center'>Registration</h3>
+        <form id="register" onsubmit="J">
+            <input type="text" name="fname" maxlength="60" placeholder="First Name">
+            <input type="text" name="mname" maxlength="2" placeholder="MI">
+            <input type="text" name="lname" maxlength="60" placeholder="Last Name">
+            <br/>
+            <input type="text" name="dob" placeholder="Date of Birth" maxlength="60">
+            <input type="text" name="phone" maxlength="10" placeholder="Phone Number">
+            <br/>
+            <input type="text" name="email" placeholder="Email" maxlength="60">
+            <input type="text" name="hschool" placeholder="High School" maxlength="60">
+            <br/>
+            <input type="text" name="address" placeholder="Address" maxlength="60">
+            <input type="text" name="city" placeholder="City" maxlength="60">
+            <br/>
+            <input type="text" name="state" placeholder="State" maxlength="60">
+            <input type="text" name="zip" placeholder="Zip Code" maxlength="5">
+            <br/>
+            <input type="submit" name="submit" value="Submit">
+            <input type="submit" name="cancel" value="Cancel">
+        </form>
+            
+        </form>
         <a id='stuff' href='#error'>Click Me!</a>
         <div style='display:none'><div id="error"><h3>Hello World</h3></div></div>
     </body>

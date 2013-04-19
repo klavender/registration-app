@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+	android:id="@+id/widget0"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<EditText
+	android:id="@+id/fname"
+	android:layout_width="125px"
+	android:layout_height="40px"
+	android:hint="First Name"
+	android:textSize="12sp"
+	android:layout_x="13dp"
+	android:layout_y="19dp" />
+<EditText
+	android:id="@+id/mname"
+	android:layout_width="40px"
+	android:layout_height="40px"
+	android:hint="MI"
+	android:textSize="12sp"
+	android:layout_x="140dp"
+	android:layout_y="19dp" />
+<EditText
+	android:id="@+id/lname"
+	android:layout_width="125px"
+	android:layout_height="40px"
+	android:hint="Last Name"
+	android:textSize="12sp"
+	android:layout_x="182dp"
+	android:layout_y="19dp" />
+<EditText
+	android:id="@+id/dob"
+	android:layout_width="125px"
+	android:layout_height="40px"
+	android:hint="Date of Birth"
+	android:textSize="12sp"
+	android:layout_x="12dp"
+	android:layout_y="68dp" />
+<EditText
+	android:id="@+id/phone"
+	android:layout_width="135px"
+	android:layout_height="40px"
+	android:hint="Phone Number"
+	android:textSize="12sp"
+	android:layout_x="147dp"
+	android:layout_y="68dp" />
+<EditText
+	android:id="@+id/email"
+	android:layout_width="125px"
+	android:layout_height="40px"
+	android:hint="Email"
+	android:textSize="12sp"
+	android:layout_x="11dp"
+	android:layout_y="116dp" />
+<EditText
+	android:id="@+id/hschool"
+	android:layout_width="125px"
+	android:layout_height="40px"
+	android:hint="High School"
+	android:textSize="12sp"
+	android:layout_x="147dp"
+	android:layout_y="116dp" />
+<EditText
+	android:id="@+id/address"
+	android:layout_width="135px"
+	android:layout_height="40px"
+	android:hint="Address"
+	android:textSize="12sp"
+	android:layout_x="12dp"
+	android:layout_y="164dp" />
+<EditText
+	android:id="@+id/city"
+	android:layout_width="120px"
+	android:layout_height="40px"
+	android:hint="City"
+	android:textSize="12sp"
+	android:layout_x="152dp"
+	android:layout_y="164dp" />
+<EditText
+	android:id="@+id/state"
+	android:layout_width="60px"
+	android:layout_height="40px"
+	android:hint="State"
+	android:textSize="12sp"
+	android:layout_x="12dp"
+	android:layout_y="211dp" />
+<EditText
+	android:id="@+id/zip"
+	android:layout_width="125px"
+	android:layout_height="40px"
+	android:hint="Zip Code"
+	android:textSize="12sp"
+	android:layout_x="78dp"
+	android:layout_y="211dp" />
+<Button
+	android:id="@+id/bsubmit"
+	android:layout_width="129dp"
+	android:layout_height="42dp"
+	android:text="Submit"
+	android:layout_x="13dp"
+	android:layout_y="277dp" />
+<Button
+	android:id="@+id/bcancel"
+	android:layout_width="130dp"
+	android:layout_height="42dp"
+	android:text="Cancel"
+	android:layout_x="147dp"
+	android:layout_y="277dp" />
+</AbsoluteLayout>

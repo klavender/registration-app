@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
+<AbsoluteLayout
+	android:id="@+id/widget0"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<Button
+	android:id="@+id/search"
+	android:layout_width="271dp"
+	android:layout_height="53dp"
+	android:text="Search"
+	android:layout_x="26dp"
+	android:layout_y="132dp" />
+<Button
+	android:id="@+id/random"
+	android:layout_width="271dp"
+	android:layout_height="53dp"
+	android:text="Select Random"
+	android:layout_x="26dp"
+	android:layout_y="199dp" />
+<Button
+	android:id="@+id/mexit"
+	android:layout_width="271dp"
+	android:layout_height="53dp"
+	android:text="Exit"
+	android:layout_x="27dp"
+	android:layout_y="301dp" />
+<Button
+	android:id="@+id/register"
+	android:layout_width="271dp"
+	android:layout_height="53dp"
+	android:text="Register"
+	android:layout_x="26dp"
+	android:layout_y="65dp" />
 <TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="Hello World, MainActivity"
-    />
-</LinearLayout>
-
+	android:id="@+id/widget36"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Main Menu"
+	android:textSize="26sp"
+	android:layout_x="95dp"
+	android:layout_y="15dp" />
+</AbsoluteLayout>

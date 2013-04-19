@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+	android:id="@+id/widget0"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<TextView
+	android:id="@+id/widget57"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Select a Random Registrant"
+	android:textSize="24sp"
+	android:layout_x="7dp"
+	android:layout_y="5dp" />
+<Button
+	android:id="@+id/select"
+	android:layout_width="219dp"
+	android:layout_height="53dp"
+	android:text="Select"
+	android:layout_x="50dp"
+	android:layout_y="65dp" />
+<Button
+	android:id="@+id/rexit"
+	android:layout_width="219dp"
+	android:layout_height="48dp"
+	android:text="Exit"
+	android:layout_x="49dp"
+	android:layout_y="339dp" />
+<TextView
+	android:id="@+id/widget60"
+	android:layout_width="213dp"
+	android:layout_height="71dp"
+	android:background="#ffffffff"
+	android:textColor="#ff000000"
+	android:layout_x="53dp"
+	android:layout_y="156dp" />
+</AbsoluteLayout>

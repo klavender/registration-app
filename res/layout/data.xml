@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+	android:id="@+id/widget0"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<TextView
+	android:id="@+id/widget43"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Registrant Data"
+	android:textSize="26sp"
+	android:layout_x="69dp"
+	android:layout_y="8dp" />
+<Spinner
+	android:id="@+id/scriteria"
+	android:layout_width="107dp"
+	android:layout_height="44dp"
+	android:layout_x="198dp"
+	android:layout_y="73dp" />
+<Spinner
+	android:id="@+id/fcriteria"
+	android:layout_width="109dp"
+	android:layout_height="45dp"
+	android:layout_x="20dp"
+	android:layout_y="72dp" />
+<TextView
+	android:id="@+id/sdf"
+	android:layout_width="wrap_content"
+	android:layout_height="19dp"
+	android:text="Filter Criteria"
+	android:layout_x="21dp"
+	android:layout_y="47dp" />
+<TextView
+	android:id="@+id/abc"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Sort Criteria"
+	android:layout_x="199dp"
+	android:layout_y="47dp" />
+<EditText
+	android:id="@+id/ftcriteria"
+	android:layout_width="101dp"
+	android:layout_height="41dp"
+	android:text="EditText"
+	android:textSize="18sp"
+	android:layout_x="22dp"
+	android:layout_y="123dp" />
+<ListView
+	android:id="@+id/flist"
+	android:layout_width="280dp"
+	android:layout_height="185dp"
+	android:layout_x="24dp"
+	android:layout_y="170dp" />
+<Button
+	android:id="@+id/dexit"
+	android:layout_width="181dp"
+	android:layout_height="47dp"
+	android:text="Exit"
+	android:layout_x="73dp"
+	android:layout_y="372dp" />
+</AbsoluteLayout>

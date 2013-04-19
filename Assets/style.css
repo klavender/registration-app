@@ -1,0 +1,16 @@
+/* 
+    Document   : style
+    Created on : Apr 13, 2013, 10:55:36 AM
+    Author     : Kevin Lavender
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+::-webkit-input-placeholder
+{
+    font-style: italic;
+}
