@@ -17,9 +17,9 @@ public class MainMenu extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        registrant_db = new Registry();
-        registrant_db.addRegistrant(new Registrant("John,B,Smith,12/3/1999,333-333-3333,joey@hotmail.com,hs,address,city,OH,12345"));
-        registrant_db.addRegistrant(new Registrant("Jim,B,Smith,12/3/1999,333-333-3333,joey@hotmail.com,hs,address,city,OH,12345"));
+        registrant_db = new Registry(this);
+        registrant_db.addRegistrant(new Registrant("John,B,Lacroix,12/3/1999,333-333-3333,joey@hotmail.com,hs,address,city,OH,12345"));
+        registrant_db.addRegistrant(new Registrant("Jim,B,Rogers,12/3/1999,333-333-3333,joey@hotmail.com,hs,address,city,OH,12345"));
         setContentView(R.layout.main);
         ((Button) findViewById(R.id.bregister)).setOnClickListener(new ButtonListener());
         ((Button) findViewById(R.id.bsearch)).setOnClickListener(new ButtonListener());

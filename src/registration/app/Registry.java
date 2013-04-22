@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
 import java.util.Random;
+import android.app.Activity;
 
 /**
  *
@@ -22,32 +23,18 @@ import java.util.Random;
  */
 public class Registry 
 {
-    public Registry()
+    public Registry(Activity act)
     {
         registrants = new ArrayList<Registrant>();
-        try
-        {
-            try
-            {
-                readIn();
-            }
-            catch (FileNotFoundException e)
-            {
-                FileWriter file;
-                file = new FileWriter("trans.dat");
-                file.close();
-            }
-        }
-        catch (IOException e)
-        {
-            
-        }
+        a = act;
+        File f = new File(a.getFilesDir().toString() + "/trans.dat");
+        f.delete();
     }
     
     public boolean writeOut(Registrant registree) throws IOException
     {
         FileWriter file;
-        file = new FileWriter("trans.dat");
+        file = new FileWriter(a.getFilesDir().toString() + "/trans.dat",true);
         BufferedWriter file_out = new BufferedWriter(file);
         /*Iterator<Registrant> iterator = registrants.iterator();
         while (iterator.hasNext())
@@ -64,18 +51,22 @@ public class Registry
     
     public boolean readIn() throws FileNotFoundException, IOException
     {
-        String filename = new String("trans.dat");
-        File fcheck = new File("master.dat");
-        if (fcheck.length()> 0) filename = "master.dat";
+        String filename = a.getFilesDir().toString() + "/trans.dat";
+        File fcheck = new File(a.getFilesDir().toString() + "/master.dat");
+        ArrayList<Registrant> registrant_list = new ArrayList<Registrant>();
+        
+        if (fcheck.length()> 0) filename = a.getFilesDir().toString() + "/master.dat";
         
         FileReader file = new FileReader(filename);
         BufferedReader file_in = new BufferedReader(file);
         String line;
         while ((line = file_in.readLine()) != null)
         {
-            if (line!="") registrants.add(new Registrant(line));
+            if (!line.equals("")) registrant_list.add(new Registrant(line));
         }
         file_in.close();
+        
+        registrants = registrant_list;
         
         return true;
     }
@@ -98,28 +89,29 @@ public class Registry
             
         }
         
-        if (sortCriteria == "FName")
+        if (sortCriteria.equals("First Name"))
             Collections.sort(registrants,new RegistrantComparatorFName());
-        else if (sortCriteria == "LName")
+        else if (sortCriteria.equals("Last Name"))
             Collections.sort(registrants,new RegistrantComparatorLName());
-        else if (sortCriteria == "ZCode")
+        else if (sortCriteria.equals("Zip Code"))
             Collections.sort(registrants,new RegistrantComparatorZCode());
         
-        if (filterCriteria.length()==0) return registrants;
+        if (filterCriteria.equals("None")) return registrants;
         
         Iterator<Registrant> iterator = registrants.iterator();
         ArrayList<Registrant> registrants_filtered = new ArrayList<Registrant>();
         
+        int field=0;
+            
+        if (filterCriteria.equals("First Name")) field = 0;
+        else if (filterCriteria.equals("Last Name")) field = 2;
+        else if (filterCriteria.equals("Email")) field = 5;
+        
         while (iterator.hasNext())
         {
             Registrant register = iterator.next();
-            int field=0;
             
-            if (filterCriteria == "FName") field = 0;
-            else if (filterCriteria == "LName") field = 1;
-            else if (filterCriteria == "Email") field = 3;
-            
-            if (register.getField(field).contains(filterString)) 
+            if (register.getField(field).toLowerCase().contains(filterString.toLowerCase())) 
                 registrants_filtered.add(register);
         }
         
@@ -145,13 +137,13 @@ public class Registry
         {
             
         }
-        
-        return registrants.get(ran.nextInt()%registrants.size());
+        int random = ran.nextInt();
+        if (random < 0) random = random*(-1);
+        return registrants.get(random%registrants.size());
     }
     
     public void addRegistrant(Registrant registree)
     {
-        registrants.add(registree);
         try
         {
             writeOut(registree);
@@ -162,5 +154,6 @@ public class Registry
         }
     }
     
+    Activity a;
     ArrayList<Registrant> registrants;
 }

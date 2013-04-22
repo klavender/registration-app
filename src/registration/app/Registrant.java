@@ -52,7 +52,7 @@ public class Registrant
     @Override
     public String toString()
     {
-        return writeOut();
+        return getField(0) + " " + getField(1) + " " + getField(2) + "\n" + getField(5) + "     " + getField(10);
     }
     
     String[] datafields;

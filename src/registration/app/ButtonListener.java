@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.content.DialogInterface;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.Activity;
@@ -24,7 +25,7 @@ import java.util.Iterator;
  *
  * @author Kevin Lavender
  */
-public class ButtonListener implements View.OnClickListener, Spinner.OnItemSelectedListener
+public class ButtonListener implements View.OnClickListener, AdapterView.OnItemSelectedListener
 {
     @Override
     public void onItemSelected(AdapterView<?> adapterView,View v,int p,long id)
@@ -151,35 +152,69 @@ public class ButtonListener implements View.OnClickListener, Spinner.OnItemSelec
                 break;
             case R.id.bselect:
                 TextView text = (TextView) a.findViewById(R.id.rtext);
-                Registrant registre = (Registrant) ((MainMenu)a).registrant_db.selectRandom();
-                String info = registre.getField(0) + " " + registre.getField(1) + " " + registre.getField(2) + "\n" + registre.getField(5);
-                text.setText(info);
+                if (((MainMenu)a).registrant_db.getRegistrants("","","").size()==0) 
+                    text.setText("There are no registrants available to select from");
+                else
+                {
+                    Registrant registre = (Registrant) ((MainMenu)a).registrant_db.selectRandom();
+                    String info = registre.getField(0) + " " + registre.getField(1) + " " + registre.getField(2) + "\n" + registre.getField(5);
+                    text.setText(info);
+                }
                 break;
             case R.id.bsearch:
                 a.setContentView(R.layout.data);
-                ArrayAdapter<CharSequence> fsa = ArrayAdapter.createFromResource(
-                a, R.array.fopts, android.R.layout.simple_spinner_item);
-                ArrayAdapter<CharSequence> ssa = ArrayAdapter.createFromResource(
-                a, R.array.sopts, android.R.layout.simple_spinner_item);
+                List<String> list2 = new ArrayList<String>();
+                list2.add("First Name");
+                list2.add("Last Name");
+                list2.add("Email");
+                //ArrayAdapter<CharSequence> fsa = ArrayAdapter.createFromResource(
+                //a, R.array.fopts, android.R.layout.simple_spinner_item);
+                //ArrayAdapter<CharSequence> ssa = ArrayAdapter.createFromResource(
+                //a, R.array.sopts, android.R.layout.simple_spinner_item);
                 
+                //ArrayAdapter fsa = new ArrayAdapter(a,android.R.layout.simple_spinner_item,list2);
                 
                 ((Button) a.findViewById(R.id.bexit1)).setOnClickListener(this);
+                ((Button) a.findViewById(R.id.bapply)).setOnClickListener(this);
                 Spinner fs = (Spinner) a.findViewById(R.id.fcriteria);
                 Spinner ss = (Spinner) a.findViewById(R.id.scriteria);
+                //fs.setOnItemSelectedListener(this);
+                //ss.setOnItemSelectedListener(this);
                 
-                
-                fsa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                ssa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                //fsa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                //ssa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 //fs.setAdapter(fsa);
                 //ss.setAdapter(ssa);
-                fs.setOnItemSelectedListener(this);
-                ss.setOnItemSelectedListener(this);
                 
                 ListView list = (ListView) a.findViewById(R.id.flist);
                 ArrayList<Registrant> registrants = ((MainMenu)a).registrant_db.getRegistrants("", "","");
-                ArrayAdapter<Registrant> aa = new ArrayAdapter<Registrant>(a,android.R.layout.simple_list_item_1,registrants);
-                list.setAdapter(aa);
+                ArrayAdapter<Registrant> aa = new ArrayAdapter<Registrant>(a,R.layout.list_item,registrants);
+                ArrayList<String> errorMsg = new ArrayList<String>();
+                errorMsg.add("There are no registrants available to select from");
+                ArrayAdapter<String> ar = new ArrayAdapter<String>(a,R.layout.list_item,errorMsg);
                 
+                if (registrants.size()==0) list.setAdapter(ar);
+                else list.setAdapter(aa);
+                break;
+            case R.id.bapply:
+                Spinner fs1 = (Spinner) a.findViewById(R.id.fcriteria);
+                Spinner ss1 = (Spinner) a.findViewById(R.id.scriteria);
+                EditText edit = (EditText) a.findViewById(R.id.ftcriteria);
+                ListView rlist = (ListView) a.findViewById(R.id.flist);
+                
+                String filterCriteria = fs1.getSelectedItem().toString();
+                String sortCriteria = ss1.getSelectedItem().toString();
+                String filterText = edit.getText().toString();
+                
+                ArrayList<Registrant> registrants1 = ((MainMenu)a).registrant_db.getRegistrants(filterText, filterCriteria, sortCriteria); 
+                ArrayAdapter<Registrant> ad = new ArrayAdapter<Registrant>(a,R.layout.list_item,registrants1);
+                
+                ArrayList<String> errorMsg1 = new ArrayList<String>();
+                errorMsg1.add("Your search yielded no results");
+                ArrayAdapter<String> ar1 = new ArrayAdapter<String>(a,R.layout.list_item,errorMsg1);
+                
+                
+                rlist.setAdapter(ad);
                 break;
             case R.id.bregister:
                 a.setContentView(R.layout.register);
